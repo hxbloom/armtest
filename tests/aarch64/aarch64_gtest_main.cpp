@@ -14,7 +14,7 @@
 #include "test_pooling33_arm.h"
 #include "test_conv22_arm.h"
 #include "test_conv44_arm.h"
-
+#include "test_conv33dw_arm.h"
 
 int main(int argc, char **argv){
     ::testing::InitGoogleTest(&argc, argv);

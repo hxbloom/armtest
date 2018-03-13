@@ -1,8 +1,10 @@
+#pragma once
 #include <arm_neon.h>
 #include <stdio.h>
 #include <assert.h>
+#include "gtest/gtest.h"
 
-int main()
+TEST(aarch64_assembly, conv33dw)
 {
   // Test the assembly part only
   // Input is set to 10\11 respectively, so that outw=outh=9, let outh to be odd number.
@@ -397,10 +399,12 @@ int main()
   outptr -= outw*outh;
   outptrb -= outw*outh;
   
+  EXPECT_NE(outptr, outptrb);
   for (int i=0; i<outw*outh; i++)
   {
-    printf("the %d of cc is : %f\n", i, *(out+i));
-    printf("-----------------the %d of dd is : %f\n", i, *(out2+i));
+      EXPECT_EQ(*(out+i), *(out2+i));
+//    printf("the %d of cc is : %f\n", i, *(out+i));
+//    printf("-----------------the %d of dd is : %f\n", i, *(out2+i));
   }
     
 // Line 522
@@ -607,10 +611,12 @@ int main()
   outptr -= outw*outh;
   outptrb -= outw*outh;
   
+  EXPECT_NE(outptr, outptrb);
   for (int i=0; i<outw*outh; i++)
   {
-    printf("the %d of cc is : %f\n", i, *(out3+i));
-    printf("-----------------the %d of dd is : %f\n", i, *(out4+i));
+      EXPECT_EQ(*(out3+i), *(out4+i));
+//    printf("the %d of cc is : %f\n", i, *(out3+i));
+//    printf("-----------------the %d of dd is : %f\n", i, *(out4+i));
   }
 
 
@@ -619,5 +625,4 @@ int main()
   delete []out3;
   delete []out4;
     
-  return 0;
 }
