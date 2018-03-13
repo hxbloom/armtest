@@ -1,0 +1,13 @@
+// Generate assemble code using cross complier gcc
+arm-linux-gnueabi-gcc -static -S -march=armv7-a main.cpp
+arm-linux-gnueabi-gcc -static -mfloat-abi=softfp -mfpu=neon -march=armv7-a -O2 v7_fill.cpp
+arm-linux-gnueabi-gcc -static -mfloat-abi=softfp -mfpu=neon -march=armv8-a -O2 v7_fill.cpp
+
+// How to build:
+// See CMakelists.txt to switch between clang and gcc
+
+// Arm AArch32
+cmake -DCMAKE_TOOLCHAIN_FILE=$ANDROID_NDK/build/cmake/android.toolchain.cmake -DARM_ARCH="aarch32" ..
+
+// Arm AArch64
+cmake -DCMAKE_TOOLCHAIN_FILE=$ANDROID_NDK/build/cmake/android.toolchain.cmake -DARM_ARCH="aarch64" ..
