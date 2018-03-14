@@ -409,7 +409,7 @@ TEST(aarch64_assembly, conv33dw)
     
 // Line 522
 // Case: when stride = 2, compute 1*h at a time
-// Input is set to 10\11 respectively, so that outw=outh=9, let outh to be odd number.
+// Input is set to 17\17 respectively, so that outw=outh=8, let outh to be odd number.
 // Test is for 1 group only. (group is not considered)
 
   w = 17;

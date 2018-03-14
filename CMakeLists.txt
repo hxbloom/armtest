@@ -69,12 +69,12 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 # execution
 # main
 #
-add_executable(current src/conv55_arm.cpp)
+add_executable(current src/conv11_arm.cpp)
 #add_executable(current src/newtest.cpp)
 set_property(TARGET current PROPERTY COMPILE_FLAGS "-fpie")
 set_property(TARGET current PROPERTY LINK_FLAGS "-pie")
 # flag "-save-temps" is used to generate assembly code
-# unblock it when you want to see the assembly code
+# unblock to generate the assembly code
 set_property(TARGET current PROPERTY COMPILE_FLAGS "-save-temps")
 
 
