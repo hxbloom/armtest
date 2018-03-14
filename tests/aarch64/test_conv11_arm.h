@@ -1,6 +1,8 @@
+#pragma once
 #include <arm_neon.h>
 #include <stdio.h>
 #include <assert.h>
+#include "gtest/gtest.h"
 
 
 #define ENABLE_BIAS 1
@@ -9,7 +11,7 @@
 #include <algorithm>
 #endif
 
-int main()
+TEST(aarch64_assembly, conv11)
 {
   // *************************************************************
   // ********                                           **********
@@ -209,8 +211,13 @@ int main()
 
 #endif // __aarch64__
 
+  EXPECT_NE(outptr0, outptr0b);
+  EXPECT_NE(outptr1, outptr1b);
+  EXPECT_NE(outptr2, outptr2b);
+  EXPECT_NE(outptr3, outptr3b);
   for (int i=0; i<outw*outh; i++)
   {
+    EXPECT_EQ(*(out+i), *(out2+i));
 //    printf("the %d of cc is : %f\n", i, *(out+i));
 //    printf("-----------------the %d of dd is : %f\n", i, *(out2+i));
   }
@@ -396,8 +403,10 @@ int main()
 
 #endif // __aarch64__
 
+  EXPECT_NE(outptr, outptrb);
   for (int i=0; i<outw*outh; i++)
   {
+    EXPECT_EQ(*(out3+i), *(out4+i));
 //    printf("the %d of cc is : %f\n", i, *(out3+i));
 //    printf("-----------------the %d of dd is : %f\n", i, *(out4+i));
   }
@@ -520,8 +529,11 @@ int main()
             }
 #endif // __aarch64__
 
+
+  EXPECT_NE(outptr, outptrb);
   for (int i=0; i<outw*outh; i++)
   {
+    EXPECT_EQ(*(out5+i), *(out6+i));
 //    printf("the %d of cc is : %f\n", i, *(out5+i));
 //    printf("-----------------the %d of dd is : %f\n", i, *(out6+i));
   }
@@ -920,9 +932,14 @@ int main()
 #endif // __aarch64__
 
 
-
+  EXPECT_NE(outptr0, outptr0b);
+  EXPECT_NE(outptr1, outptr1b);
+  EXPECT_NE(outptr2, outptr2b);
+  EXPECT_NE(outptr3, outptr3b);
   for (int i=0; i<outw*outh; i++)
   {
+
+    EXPECT_EQ(*(out7+i), *(out8+i));
 //    printf("the %d of cc is : %f\n", i, *(out7+i));
 //    printf("-----------------the %d of dd is : %f\n", i, *(out8+i));
   }
@@ -1146,9 +1163,13 @@ int main()
 
 #endif // __aarch64__
 
-
+  EXPECT_NE(outptr0, outptr0b);
+  EXPECT_NE(outptr1, outptr1b);
+  EXPECT_NE(outptr2, outptr2b);
+  EXPECT_NE(outptr3, outptr3b);
   for (int i=0; i<outw*outh; i++)
   {
+    EXPECT_EQ(*(out9+i), *(out10+i));
 //    printf("the %d of cc is : %f\n", i, *(out9+i));
 //    printf("-----------------the %d of dd is : %f\n", i, *(out10+i));
   }
@@ -1354,9 +1375,10 @@ int main()
 #endif //__aarch64__
 
 
-
+  EXPECT_NE(outptr, outptrb);
   for (int i=0; i<outw*outh; i++)
   {
+      EXPECT_EQ(*(out11+i), *(out12+i));
 //    printf("the %d of cc is : %f\n", i, *(out11+i));
 //    printf("-----------------the %d of dd is : %f\n", i, *(out12+i));
   }
@@ -1498,11 +1520,12 @@ int main()
 
 #endif //__aarch64__
 
-
+  EXPECT_NE(outptr, outptrb);
   for (int i=0; i<outw*outh; i++)
   {
-    printf("the %d of cc is : %f\n", i, *(out13+i));
-    printf("-----------------the %d of dd is : %f\n", i, *(out14+i));
+      EXPECT_EQ(*(out13+i), *(out14+i));
+//    printf("the %d of cc is : %f\n", i, *(out13+i));
+//    printf("-----------------the %d of dd is : %f\n", i, *(out14+i));
   }
 
 
@@ -1515,5 +1538,4 @@ int main()
   delete []out13;
   delete []out14;
   
-  return 0;
 }
