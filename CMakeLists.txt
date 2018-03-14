@@ -69,7 +69,7 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 # execution
 # main
 #
-add_executable(current src/conv33dw_arm.cpp)
+add_executable(current src/conv55_arm.cpp)
 #add_executable(current src/newtest.cpp)
 set_property(TARGET current PROPERTY COMPILE_FLAGS "-fpie")
 set_property(TARGET current PROPERTY LINK_FLAGS "-pie")
