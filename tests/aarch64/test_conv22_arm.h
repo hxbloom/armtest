@@ -302,8 +302,8 @@ TEST(aarch64_assembly, conv22)
   EXPECT_NE(outptr, outptr2);
   for (int i=0; i<outw*outh; i++)
   {
-    EXPECT_EQ(*(outptr+i), *(outptr2+i));
-    EXPECT_EQ(*(outptr+i), 6*(2*w+6)+24*(i%outw)+(i/outw)*24*w);
+    EXPECT_NEAR(*(outptr+i), *(outptr2+i),1e-5);
+    EXPECT_NEAR(*(outptr+i), 6*(2*w+6)+24*(i%outw)+(i/outw)*24*w,1e-5);
     //printf("the %d of cc is : %f\n", i, *(outptr+i));
     //printf("-----------------the %d of dd is : %f\n", i, *(outptr2+i));
   }

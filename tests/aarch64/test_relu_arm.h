@@ -75,8 +75,8 @@ TEST(aarch64_assembly, relu)
   
   for (int i=0; i<20; i++)
   {
-    EXPECT_EQ(*(cc+i), *(dd+i));
-    EXPECT_EQ(*(cc+i), fmaxf(e0[i],0.f));
+    EXPECT_NEAR(*(cc+i), *(dd+i),1e-5);
+    EXPECT_NEAR(*(cc+i), fmaxf(e0[i],0.f),1e-5);
   }
 
 }

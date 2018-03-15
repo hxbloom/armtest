@@ -44,8 +44,8 @@ TEST(aarch64_assembly, mat_fill)
   
   for (int i=0; i<20; i++)
   {
-    EXPECT_EQ(*(cc+i), a);
-    EXPECT_EQ(*(cc+i), a);
+    EXPECT_NEAR(*(cc+i), a,1e-5);
+    EXPECT_NEAR(*(cc+i), a,1e-5);
   }
 
 }

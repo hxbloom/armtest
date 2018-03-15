@@ -154,8 +154,8 @@ TEST(aarch64_assembly, pooling33)
   
   for (int i=0; i<outw*outh; i++)
   {
-    EXPECT_EQ(*(outptr+i), *(outptr2+i));
-    EXPECT_EQ(*(outptr+i), 2*w+3+2*(i%outw)+(i/outw)*2*w);
+    EXPECT_NEAR(*(outptr+i), *(outptr2+i),1e-5);
+    EXPECT_NEAR(*(outptr+i), 2*w+3+2*(i%outw)+(i/outw)*2*w,1e-5);
   }
 
 

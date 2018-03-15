@@ -122,6 +122,6 @@ TEST(aarch64_assembly, innerproduct)
   
   
   //printf("sum 1 is : %f , sum 2 is : %f .\n",sum, sum2);
-  EXPECT_EQ(sum, sum2);
-  EXPECT_EQ(sum, 10600.f);
+  EXPECT_NEAR(sum, sum2,1e-5);
+  EXPECT_NEAR(sum, 10600.f,1e-5);
 }

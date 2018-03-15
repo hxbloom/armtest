@@ -320,7 +320,7 @@ TEST(aarch64_assembly, conv44)
   EXPECT_NE(outptr, outptr2);
   for (int i=0; i<outw*outh; i++)
   {
-    EXPECT_EQ(*(outptr+i), *(outptr2+i));
+    EXPECT_NEAR(*(outptr+i), *(outptr2+i),1e-5);
   }
 
   delete []outptr;

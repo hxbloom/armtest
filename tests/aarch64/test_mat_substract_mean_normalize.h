@@ -144,16 +144,16 @@ TEST(aarch64_assembly, mat_subtract_mean_normalize)
   
   for (int i=0; i<20; i++)
   {
-    EXPECT_EQ(*(cc+i), *(dd+i));
-    EXPECT_EQ(*(cc+i), i-4.f);
-    EXPECT_EQ(*(dd+i), i-4.f);
+    EXPECT_NEAR(*(cc+i), *(dd+i),1e-5);
+    EXPECT_NEAR(*(cc+i), i-4.f,1e-5);
+    EXPECT_NEAR(*(dd+i), i-4.f,1e-5);
     
-    EXPECT_EQ(*(ee+i), *(ff+i));
-    EXPECT_EQ(*(ee+i), (i+1)*10.f);
-    EXPECT_EQ(*(ff+i), (i+1)*10.f);
+    EXPECT_NEAR(*(ee+i), *(ff+i),1e-5);
+    EXPECT_NEAR(*(ee+i), (i+1)*10.f,1e-5);
+    EXPECT_NEAR(*(ff+i), (i+1)*10.f,1e-5);
     
-    EXPECT_EQ(*(gg+i), *(hh+i));
-    EXPECT_EQ(*(gg+i), (i-4.f)*10.f);
-    EXPECT_EQ(*(hh+i), (i-4.f)*10.f);  
+    EXPECT_NEAR(*(gg+i), *(hh+i),1e-5);
+    EXPECT_NEAR(*(gg+i), (i-4.f)*10.f,1e-5);
+    EXPECT_NEAR(*(hh+i), (i-4.f)*10.f,1e-5);  
   }
 }

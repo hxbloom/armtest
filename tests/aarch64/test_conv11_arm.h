@@ -217,7 +217,7 @@ TEST(aarch64_assembly, conv11)
   EXPECT_NE(outptr3, outptr3b);
   for (int i=0; i<outw*outh; i++)
   {
-    EXPECT_EQ(*(out+i), *(out2+i));
+    EXPECT_NEAR(*(out+i), *(out2+i),1e-5);
 //    printf("the %d of cc is : %f\n", i, *(out+i));
 //    printf("-----------------the %d of dd is : %f\n", i, *(out2+i));
   }
@@ -406,7 +406,7 @@ TEST(aarch64_assembly, conv11)
   EXPECT_NE(outptr, outptrb);
   for (int i=0; i<outw*outh; i++)
   {
-    EXPECT_EQ(*(out3+i), *(out4+i));
+    EXPECT_NEAR(*(out3+i), *(out4+i),1e-5);
 //    printf("the %d of cc is : %f\n", i, *(out3+i));
 //    printf("-----------------the %d of dd is : %f\n", i, *(out4+i));
   }
@@ -533,7 +533,7 @@ TEST(aarch64_assembly, conv11)
   EXPECT_NE(outptr, outptrb);
   for (int i=0; i<outw*outh; i++)
   {
-    EXPECT_EQ(*(out5+i), *(out6+i));
+    EXPECT_NEAR(*(out5+i), *(out6+i),1e-5);
 //    printf("the %d of cc is : %f\n", i, *(out5+i));
 //    printf("-----------------the %d of dd is : %f\n", i, *(out6+i));
   }
@@ -939,7 +939,7 @@ TEST(aarch64_assembly, conv11)
   for (int i=0; i<outw*outh; i++)
   {
 
-    EXPECT_EQ(*(out7+i), *(out8+i));
+    EXPECT_NEAR(*(out7+i), *(out8+i),1e-5);
 //    printf("the %d of cc is : %f\n", i, *(out7+i));
 //    printf("-----------------the %d of dd is : %f\n", i, *(out8+i));
   }
@@ -1169,7 +1169,7 @@ TEST(aarch64_assembly, conv11)
   EXPECT_NE(outptr3, outptr3b);
   for (int i=0; i<outw*outh; i++)
   {
-    EXPECT_EQ(*(out9+i), *(out10+i));
+    EXPECT_NEAR(*(out9+i), *(out10+i),1e-5);
 //    printf("the %d of cc is : %f\n", i, *(out9+i));
 //    printf("-----------------the %d of dd is : %f\n", i, *(out10+i));
   }
@@ -1378,7 +1378,7 @@ TEST(aarch64_assembly, conv11)
   EXPECT_NE(outptr, outptrb);
   for (int i=0; i<outw*outh; i++)
   {
-      EXPECT_EQ(*(out11+i), *(out12+i));
+      EXPECT_NEAR(*(out11+i), *(out12+i),1e-5);
 //    printf("the %d of cc is : %f\n", i, *(out11+i));
 //    printf("-----------------the %d of dd is : %f\n", i, *(out12+i));
   }
@@ -1523,7 +1523,7 @@ TEST(aarch64_assembly, conv11)
   EXPECT_NE(outptr, outptrb);
   for (int i=0; i<outw*outh; i++)
   {
-      EXPECT_EQ(*(out13+i), *(out14+i));
+      EXPECT_NEAR(*(out13+i), *(out14+i),1e-5);
 //    printf("the %d of cc is : %f\n", i, *(out13+i));
 //    printf("-----------------the %d of dd is : %f\n", i, *(out14+i));
   }

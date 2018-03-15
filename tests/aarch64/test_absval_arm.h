@@ -69,8 +69,8 @@ TEST(aarch64_assembly, absval)
   
   for (int i=0; i<20; i++)
   {
-    EXPECT_EQ(*(cc+i), *(dd+i));
-    EXPECT_EQ(*(cc+i), fabs(e0[i]));
+    EXPECT_NEAR(*(cc+i), *(dd+i),1e-5);
+    EXPECT_NEAR(*(cc+i), fabs(e0[i]),1e-5);
   }
 
 }

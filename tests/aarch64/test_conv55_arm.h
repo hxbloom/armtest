@@ -666,7 +666,7 @@ TEST(aarch64_assembly, conv55)
   EXPECT_NE(outptr, outptrb);
   for (int i=0; i<outw*outh; i++)
   {
-      EXPECT_EQ(*(out+i), *(out2+i));
+      EXPECT_NEAR(*(out+i), *(out2+i),1e-5);
 //    printf("the %d of cc is : %f\n", i, *(out+i));
 //    printf("-----------------the %d of dd is : %f\n", i, *(out2+i));
   }
@@ -1012,7 +1012,7 @@ TEST(aarch64_assembly, conv55)
   EXPECT_NE(outptr, outptrb);
   for (int i=0; i<outw*outh; i++)
   {
-      EXPECT_EQ(*(out3+i), *(out4+i));
+      EXPECT_NEAR(*(out3+i), *(out4+i),1e-5);
 //    printf("the %d of cc is : %f\n", i, *(out3+i));
 //    printf("-----------------the %d of dd is : %f\n", i, *(out4+i));
   }

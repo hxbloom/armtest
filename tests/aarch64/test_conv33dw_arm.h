@@ -402,7 +402,7 @@ TEST(aarch64_assembly, conv33dw)
   EXPECT_NE(outptr, outptrb);
   for (int i=0; i<outw*outh; i++)
   {
-      EXPECT_EQ(*(out+i), *(out2+i));
+      EXPECT_NEAR(*(out+i), *(out2+i),1e-5);
 //    printf("the %d of cc is : %f\n", i, *(out+i));
 //    printf("-----------------the %d of dd is : %f\n", i, *(out2+i));
   }
@@ -527,8 +527,8 @@ TEST(aarch64_assembly, conv33dw)
             nn = outw >> 2;
 
 // Problem here: LD2 of aarch64 only supports { <Vt>.<T>, <Vt>.<T> }, {<Xn|SP>}
-// So I replace v8 with v19, then add v20 here as a padding NEON register
-// This unused operation will affect the performance somehow. -.-||
+// So I use v8, plus v9 here as a padding NEON register
+// This unused operation (the v9 data used for padding in ld2) will affect the performance somehow. -.-||
 
             if (nn > 0)
             {
@@ -543,8 +543,8 @@ TEST(aarch64_assembly, conv33dw)
                 "fmul       v10.4s, v3.4s, %10.s[1]        \n"
 
                 "prfm       pldl1keep, [%2, #256]          \n"
-                "ld2        {v19.4s, v20.4s}, [%2]         \n"
-                "ext        v1.16b, v2.16b, v19.16b, #4    \n"
+                "ld2        {v8.4s, v9.4s}, [%2]           \n"
+                "ext        v1.16b, v2.16b, v8.16b, #4     \n"
 
                 "fmla       v11.4s, v1.4s, %10.s[2]        \n"
 
@@ -555,8 +555,8 @@ TEST(aarch64_assembly, conv33dw)
                 "fmla       v10.4s, v3.4s, %11.s[1]        \n"
 
                 "prfm       pldl1keep, [%3, #256]          \n"
-                "ld2        {v19.4s, v20.4s}, [%3]         \n"
-                "ext        v1.16b, v2.16b, v19.16b, #4    \n"
+                "ld2        {v8.4s, v9.4s}, [%3]           \n"
+                "ext        v1.16b, v2.16b, v8.16b, #4     \n"
 
                 "fmla       v11.4s, v1.4s, %11.s[2]        \n"
                 
@@ -567,8 +567,8 @@ TEST(aarch64_assembly, conv33dw)
                 "fmla       v10.4s, v3.4s, %12.s[1]        \n"
 
                 "prfm       pldl1keep, [%4, #256]          \n"
-                "ld2        {v19.4s, v20.4s}, [%4]         \n"
-                "ext        v1.16b, v2.16b, v19.16b, #4    \n"
+                "ld2        {v8.4s, v9.4s}, [%4]           \n"
+                "ext        v1.16b, v2.16b, v8.16b, #4     \n"
 
                 "fmla       v11.4s, v1.4s, %12.s[2]        \n"
 
@@ -598,7 +598,7 @@ TEST(aarch64_assembly, conv33dw)
                   "w"(_k345x),  // %11
                   "w"(_k678x),  // %12
                   "w"(_bias0)   // %13
-                : "cc", "memory", "v0", "v1", "v2", "v3", "v9", "v10", "v11", "v12", "v13", "v14", "v15", "v19", "v20"
+                : "cc", "memory", "v0", "v1", "v2", "v3", "v8", "v9", "v10", "v11", "v12", "v13", "v14", "v15"
             );
             }
 
@@ -614,7 +614,7 @@ TEST(aarch64_assembly, conv33dw)
   EXPECT_NE(outptr, outptrb);
   for (int i=0; i<outw*outh; i++)
   {
-      EXPECT_EQ(*(out3+i), *(out4+i));
+      EXPECT_NEAR(*(out3+i), *(out4+i),1e-5);
 //    printf("the %d of cc is : %f\n", i, *(out3+i));
 //    printf("-----------------the %d of dd is : %f\n", i, *(out4+i));
   }

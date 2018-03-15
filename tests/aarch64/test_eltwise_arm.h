@@ -439,17 +439,17 @@ TEST(aarch64_assembly, eltwise)
   
   for (int i=0; i<20; i++)
   { 
-    EXPECT_EQ(*(cc_out+i), *(dd_out+i));
-    EXPECT_EQ(*(cc_out+i), (i+1.f)*(i+1.f)*3);
+    EXPECT_NEAR(*(cc_out+i), *(dd_out+i),1e-5);
+    EXPECT_NEAR(*(cc_out+i), (i+1.f)*(i+1.f)*3,1e-5);
     
-    EXPECT_EQ(*(ee_out+i), *(ff_out+i));
-    EXPECT_EQ(*(ee_out+i), (i+1.f)+(i+1.f)+3);
+    EXPECT_NEAR(*(ee_out+i), *(ff_out+i),1e-5);
+    EXPECT_NEAR(*(ee_out+i), (i+1.f)+(i+1.f)+3,1e-5);
     
-    EXPECT_EQ(*(gg_out+i), *(hh_out+i));
-    EXPECT_EQ(*(gg_out+i), coeff0*(i+1.f)+coeff1*(i+1.f)+coeff*3.f);
+    EXPECT_NEAR(*(gg_out+i), *(hh_out+i),1e-5);
+    EXPECT_NEAR(*(gg_out+i), coeff0*(i+1.f)+coeff1*(i+1.f)+coeff*3.f,1e-5);
     
-    EXPECT_EQ(*(ii_out+i), *(jj_out+i));
-    EXPECT_EQ(*(ii_out+i), fmaxf(i+2.f,3.f));
+    EXPECT_NEAR(*(ii_out+i), *(jj_out+i),1e-5);
+    EXPECT_NEAR(*(ii_out+i), fmaxf(i+2.f,3.f),1e-5);
   }
 
   delete []cc_out;

@@ -93,8 +93,8 @@ TEST(aarch64_assembly, pooling22)
   
   for (int i=0; i<outw*outh; i++)
   {
-    EXPECT_EQ(*(outptr+i), *(outptr2+i));
-    EXPECT_EQ(*(outptr+i), w+2+2*(i%outw)+(i/outw)*2*w);
+    EXPECT_NEAR(*(outptr+i), *(outptr2+i),1e-5);
+    EXPECT_NEAR(*(outptr+i), w+2+2*(i%outw)+(i/outw)*2*w,1e-5);
   }
 
 

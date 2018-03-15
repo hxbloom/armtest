@@ -89,8 +89,8 @@ TEST(aarch64_assembly, slice)
   {
     //printf("the %d of cc is : %f\n", i, *(cc_out+i));
     //printf("-----------the %d of dd is : %f\n", i, *(dd_out+i));
-    EXPECT_EQ(*(cc+i), *(dd+i));
-    EXPECT_EQ(*(cc+i), e0[i]);
+    EXPECT_NEAR(*(cc+i), *(dd+i),1e-5);
+    EXPECT_NEAR(*(cc+i), e0[i],1e-5);
   }
 
 

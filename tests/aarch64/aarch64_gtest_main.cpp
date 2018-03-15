@@ -18,6 +18,8 @@
 #include "test_innerproduct_arm.h"
 #include "test_conv55_arm.h"
 #include "test_conv11_arm.h"
+#include "test_conv33_arm.h"
+
 
 int main(int argc, char **argv){
     ::testing::InitGoogleTest(&argc, argv);
