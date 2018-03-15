@@ -8,11 +8,11 @@
 ---
 
 ### 特性
-* 不依赖原生ncnn，单独提取 NEON intrinsics 代码段并测试通过
+* 不依赖原生ncnn，单独提取 NEON intrinsics 代码段并逐段测试通过
 
 * 使用 cmake，在 linux (Ubuntu 16.04) 下编译通过，编译方式类似 ncnn
 
-* 目前有对应 aarch32 汇编的代码中，除了 /src/layer/mat_pixel.cpp 文件之外，其他所有对应 aarch64 版本都已经完成 （flag:但愿我没漏掉什么)
+* 目前有对应 aarch32 汇编的代码中，除了 /src/layer/mat_pixel.cpp 文件之外，其他所有对应 aarch64 版本都已经完成 （flag:应该没漏掉什么吧)
 
 * 所有替换的代码段均配有单独的测试环境，使用 googletest 作为测试工具
 
@@ -42,7 +42,7 @@ $ git submodule update --init --recursive
 
 * 使用 cmake 编译：
 
-需要下载 android-ndk ，方法核位置与 ncnn 相同
+需要下载 android-ndk ，方法和位置与 ncnn 相同
 
 ```bash
 download android-ndk from http://developer.android.com/ndk/downloads/index.html
@@ -61,4 +61,4 @@ $ cmake -DCMAKE_TOOLCHAIN_FILE=$ANDROID_NDK/build/cmake/android.toolchain.cmake 
 $ make -j4
 ```
 
-编译后得到 aarch64_test ，传到手机等设备上运行即可 ^.^
+编译后得到 aarch64_test ，传到手机等设备上运行测试即可 ^.^
