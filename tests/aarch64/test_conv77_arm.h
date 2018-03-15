@@ -1,6 +1,8 @@
+#pragma once
 #include <arm_neon.h>
 #include <stdio.h>
 #include <assert.h>
+#include "gtest/gtest.h"
 
 
 #define ENABLE_BIAS 1
@@ -9,7 +11,7 @@
 #include <algorithm>
 #endif
 
-int main()
+TEST(aarch64_assembly, conv77)
 {
   // *************************************************************
   // ********                                           **********
@@ -469,8 +471,10 @@ int main()
                 r6 += 6;
             }
 
+  EXPECT_NE(outptr, outptrb);
   for (int i=0; i<outw*outh; i++)
   {
+      EXPECT_NEAR(*(out+i), *(out2+i),1e-5);
 //    printf("the %d of cc is : %f\n", i, *(out+i));
 //    printf("-----------------the %d of dd is : %f\n", i, *(out2+i));
   }
@@ -970,9 +974,10 @@ int main()
 
 
 
-
+  EXPECT_NE(outptr, outptrb);
   for (int i=0; i<outw*outh; i++)
   {
+      EXPECT_NEAR(*(out3+i), *(out4+i),1e-5);
 //    printf("the %d of cc is : %f\n", i, *(out3+i));
 //    printf("-----------------the %d of dd is : %f\n", i, *(out4+i));
   }
@@ -983,5 +988,4 @@ int main()
   delete []out3;
   delete []out4;
 
-  return 0;
 }

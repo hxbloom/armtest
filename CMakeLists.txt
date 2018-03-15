@@ -8,16 +8,16 @@
 # 
 if(CMAKE_TOOLCHAIN_FILE)
   if(ARM_ARCH STREQUAL "aarch32")
-  set(ANDROID_TOOLCHAIN clang)
-  set(ANDROID_ABI "armeabi-v7a")
-  set(ANDROID_ARM_NEON ON)
-  set(ANDROID_PLATFORM android-14)
+    set(ANDROID_TOOLCHAIN clang)
+    set(ANDROID_ABI "armeabi-v7a")
+    set(ANDROID_ARM_NEON ON)
+    set(ANDROID_PLATFORM android-14)
   endif()
   if(ARM_ARCH STREQUAL "aarch64")
-  set(ANDROID_TOOLCHAIN clang)
-  set(ANDROID_ABI "arm64-v8a")
-  set(ANDROID_ARM_NEON ON)
-  set(ANDROID_PLATFORM android-21)
+    set(ANDROID_TOOLCHAIN clang)
+    set(ANDROID_ABI "arm64-v8a")
+    set(ANDROID_ARM_NEON ON)
+    set(ANDROID_PLATFORM android-21)
   endif()
 set(LIBRARY_OUTPUT_PATH_ROOT ${CMAKE_BINARY_DIR} CACHE PATH "root for library output, set this to change where android libs are compiled to")
 # get absolute path, but get_filename_component ABSOLUTE only refer with source dir, so find_file here :(
@@ -69,13 +69,13 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 # execution
 # main
 #
-add_executable(current src/conv77_arm.cpp)
+#add_executable(current src/conv77_arm.cpp)
 #add_executable(current src/newtest.cpp)
-set_property(TARGET current PROPERTY COMPILE_FLAGS "-fpie")
-set_property(TARGET current PROPERTY LINK_FLAGS "-pie")
+#set_property(TARGET current PROPERTY COMPILE_FLAGS "-fpie")
+#set_property(TARGET current PROPERTY LINK_FLAGS "-pie")
 # flag "-save-temps" is used to generate assembly code
 # unblock to generate the assembly code
-set_property(TARGET current PROPERTY COMPILE_FLAGS "-save-temps")
+#set_property(TARGET current PROPERTY COMPILE_FLAGS "-save-temps")
 
 
 
